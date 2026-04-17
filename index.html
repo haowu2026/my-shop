@@ -3,237 +3,374 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>精选好物 — 严选家居·小工具·美妆</title>
-  <meta name="description" content="严选高性价比好物，1688同源品质，厂家直发，放心购买" />
+  <title>好物集 — 严选家居·实用好物·品质生活</title>
+  <meta name="description" content="精选高性价比好物，家居神器、实用小工具、品质美妆。厂家直发，售后无忧。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #FDFBF8;
+      --bg: #FAF7F2;
+      --bg2: #FFF9F0;
       --card: #FFFFFF;
-      --text: #1A1A1A;
-      --text2: #666666;
-      --text3: #999999;
-      --accent: #C8622A;
-      --accent2: #E8A87C;
-      --accent-light: #FFF3EC;
-      --border: #EDE9E3;
-      --shadow: 0 2px 12px rgba(0,0,0,0.06);
-      --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
-      --radius: 16px;
-      --radius-sm: 10px;
+      --text: #1C1917;
+      --text2: #57534E;
+      --text3: #A8A29E;
+      --accent: #DC7B51;
+      --accent-dark: #C2613A;
+      --accent-light: #FEF0E8;
+      --accent2: #B5C99A;
+      --border: #EDE8E1;
+      --shadow: 0 2px 16px rgba(0,0,0,0.06);
+      --shadow-md: 0 8px 32px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --radius-xs: 8px;
       --max-w: 1100px;
+      --header-h: 64px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Noto Sans SC', sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     a { text-decoration: none; color: inherit; }
     img { display: block; max-width: 100%; }
+    button { font-family: inherit; cursor: pointer; }
+    input, textarea { font-family: inherit; }
 
-    /* ─── Header ─── */
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ═══════════════════════════════
+       HEADER
+    ═══════════════════════════════ */
     header {
-      position: sticky;
-      top: 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(253,251,248,0.92);
-      backdrop-filter: blur(16px);
+      height: var(--header-h);
+      background: rgba(250,247,242,0.88);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
     .header-inner {
       max-width: var(--max-w);
       margin: 0 auto;
       padding: 0 20px;
-      height: 60px;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    .logo-text {
+      font-size: 20px;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -0.5px;
+      letter-spacing: 1px;
     }
-    .logo span { color: var(--accent); }
-    .header-nav { display: flex; gap: 24px; }
-    .header-nav a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text2);
-      transition: color 0.2s;
+    .logo-text span { color: var(--accent); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .header-nav a:hover, .header-nav a.active { color: var(--accent); }
     .cart-btn {
       position: relative;
       background: none;
       border: none;
-      cursor: pointer;
-      padding: 6px;
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
     }
-    .cart-btn svg { width: 24px; height: 24px; stroke: var(--text); }
+    .cart-btn:hover { background: var(--accent-light); }
+    .cart-btn svg { width: 22px; height: 22px; stroke: var(--text); }
     .cart-badge {
       position: absolute;
-      top: 0; right: 0;
+      top: 4px; right: 4px;
       background: var(--accent);
       color: white;
       font-size: 10px;
       font-weight: 700;
-      width: 16px; height: 16px;
-      border-radius: 50%;
+      min-width: 16px; height: 16px;
+      border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
+      padding: 0 4px;
       transform: scale(0);
       transition: transform 0.2s;
     }
     .cart-badge.show { transform: scale(1); }
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .menu-toggle svg { width: 24px; height: 24px; stroke: var(--text); }
-
-    /* ─── Hero ─── */
-    .hero {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 40px 20px 20px;
-    }
-    .hero-card {
-      background: linear-gradient(135deg, #FFF3EC 0%, #FDF8F4 60%, #FFF9F5 100%);
-      border-radius: var(--radius);
-      padding: 48px 40px;
+    .header-wechat {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      border: 1px solid #F5E6D8;
+      gap: 6px;
+      background: var(--accent-light);
+      border: 1.5px solid rgba(220,123,81,0.2);
+      border-radius: 50px;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      transition: all 0.2s;
+    }
+    .header-wechat:hover { background: var(--accent); color: white; }
+
+    /* ═══════════════════════════════
+       HERO
+    ═══════════════════════════════ */
+    .hero {
+      margin-top: var(--header-h);
+      padding: 40px 20px 0;
+      max-width: var(--max-w);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-card {
+      background: linear-gradient(135deg, #FEF0E8 0%, #FDF6EE 50%, #F9F3EC 100%);
+      border-radius: 28px;
+      padding: 52px 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+      border: 1px solid rgba(220,123,81,0.15);
       overflow: hidden;
       position: relative;
     }
     .hero-card::before {
       content: '';
       position: absolute;
-      top: -60px; right: -60px;
-      width: 240px; height: 240px;
-      background: radial-gradient(circle, rgba(200,98,42,0.08) 0%, transparent 70%);
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(220,123,81,0.12) 0%, transparent 70%);
       border-radius: 50%;
+      pointer-events: none;
     }
-    .hero-text { flex: 1; }
-    .hero-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 5vw, 42px);
-      font-weight: 700;
-      line-height: 1.2;
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 30%;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(181,201,154,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .hero-title {
+      font-size: clamp(30px, 5.5vw, 48px);
+      font-weight: 800;
+      line-height: 1.15;
       color: var(--text);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
     }
-    .hero-text h1 em { color: var(--accent); font-style: normal; }
-    .hero-text p {
+    .hero-title em {
+      color: var(--accent);
+      font-style: normal;
+      position: relative;
+    }
+    .hero-title em::after {
+      content: '';
+      position: absolute;
+      bottom: 2px; left: 0; right: 0;
+      height: 8px;
+      background: rgba(220,123,81,0.2);
+      border-radius: 4px;
+      z-index: -1;
+    }
+    .hero-desc {
       font-size: 15px;
       color: var(--text2);
-      margin-bottom: 24px;
-      max-width: 400px;
+      margin-bottom: 28px;
+      max-width: 420px;
+      line-height: 1.8;
     }
     .hero-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
     .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
       background: white;
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 4px 14px;
+      border-radius: 50px;
+      padding: 5px 14px;
       font-size: 12px;
       font-weight: 500;
       color: var(--text2);
     }
-    .btn-primary {
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-accent {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: var(--accent);
       color: white;
-      padding: 12px 28px;
+      padding: 14px 32px;
       border-radius: 50px;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 700;
       border: none;
       cursor: pointer;
       transition: all 0.25s;
-      box-shadow: 0 4px 16px rgba(200,98,42,0.25);
+      box-shadow: 0 6px 24px rgba(220,123,81,0.35);
     }
-    .btn-primary:hover {
-      background: #B05523;
+    .btn-accent:hover {
+      background: var(--accent-dark);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(200,98,42,0.35);
+      box-shadow: 0 10px 32px rgba(220,123,81,0.45);
     }
-    .btn-secondary {
+    .btn-ghost {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: white;
       color: var(--text);
-      padding: 12px 24px;
+      padding: 14px 28px;
       border-radius: 50px;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
-      border: 1.5px solid var(--border);
+      border: 2px solid var(--border);
       cursor: pointer;
       transition: all 0.2s;
     }
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-    .hero-visual { flex-shrink: 0; }
-    .hero-img {
-      width: 260px;
-      height: 260px;
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-image {
+      width: 280px;
+      height: 280px;
+      border-radius: 24px;
       object-fit: cover;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-hover);
+      box-shadow: var(--shadow-lg);
+      flex-shrink: 0;
     }
 
-    /* ─── Section Titles ─── */
-    .section-header {
+    /* ═══════════════════════════════
+       ANNOUNCEMENT BAR
+    ═══════════════════════════════ */
+    .announcement {
       max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 48px 20px 20px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+    }
+    .announcement-bar {
+      background: linear-gradient(90deg, #DC7B51, #E8906A, #DC7B51);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
+      border-radius: 14px;
+      padding: 12px 20px;
       display: flex;
       align-items: center;
+      gap: 12px;
+      color: white;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .announcement-icon {
+      width: 28px; height: 28px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════
+       SECTION HEADERS
+    ═══════════════════════════════ */
+    .section-header {
+      max-width: var(--max-w);
+      margin: 52px auto 0;
+      padding: 0 20px;
+      display: flex;
+      align-items: flex-end;
       justify-content: space-between;
     }
-    .section-title {
-      font-family: 'Playfair Display', serif;
+    .section-title-wrap h2 {
       font-size: 26px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text);
+      letter-spacing: -0.3px;
     }
-    .section-title::after {
+    .section-title-wrap h2::after {
       content: '';
       display: block;
-      width: 36px;
-      height: 3px;
+      width: 40px;
+      height: 4px;
       background: var(--accent);
       border-radius: 2px;
+      margin-top: 8px;
+    }
+    .section-title-wrap p {
+      font-size: 13px;
+      color: var(--text3);
       margin-top: 6px;
     }
-    .section-sub { font-size: 13px; color: var(--text3); }
+    .section-more {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
 
-    /* ─── Category Tabs ─── */
+    /* ═══════════════════════════════
+       CATEGORY TABS
+    ═══════════════════════════════ */
     .cat-tabs {
       max-width: var(--max-w);
-      margin: 0 auto;
+      margin: 20px auto 0;
       padding: 0 20px;
       display: flex;
       gap: 8px;
@@ -243,82 +380,110 @@
     .cat-tabs::-webkit-scrollbar { display: none; }
     .cat-tab {
       flex-shrink: 0;
-      padding: 8px 20px;
+      padding: 9px 22px;
       border-radius: 50px;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 600;
       border: 1.5px solid var(--border);
       background: white;
       color: var(--text2);
       cursor: pointer;
       transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
     .cat-tab.active, .cat-tab:hover {
       background: var(--accent);
       color: white;
       border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(220,123,81,0.25);
     }
 
-    /* ─── Product Grid ─── */
+    /* ═══════════════════════════════
+       PRODUCT GRID
+    ═══════════════════════════════ */
     .product-grid {
       max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 20px;
+      margin: 20px auto;
+      padding: 0 20px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 20px;
     }
     .product-card {
-      background: var(--card);
+      background: white;
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid var(--border);
-      transition: all 0.3s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
+      position: relative;
     }
     .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
       border-color: transparent;
     }
     .product-img-wrap {
       position: relative;
       aspect-ratio: 1;
-      background: #F7F4F0;
+      background: #F5F0EB;
       overflow: hidden;
     }
     .product-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s;
+      transition: transform 0.5s;
     }
-    .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+    .product-card:hover .product-img-wrap img { transform: scale(1.08); }
     .product-tag {
       position: absolute;
       top: 12px; left: 12px;
       background: var(--accent);
       color: white;
       font-size: 11px;
-      font-weight: 600;
-      padding: 3px 10px;
+      font-weight: 700;
+      padding: 4px 12px;
       border-radius: 20px;
+      letter-spacing: 0.3px;
     }
-    .product-info { padding: 16px; }
+    .product-quick-add {
+      position: absolute;
+      bottom: 12px; right: 12px;
+      width: 40px; height: 40px;
+      background: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      transform: scale(0.7) translateY(10px);
+      transition: all 0.25s;
+      font-size: 18px;
+    }
+    .product-card:hover .product-quick-add {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    .product-quick-add:hover { background: var(--accent); color: white; }
+    .product-info { padding: 18px; }
     .product-cat {
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
     }
     .product-name {
       font-size: 15px;
       font-weight: 600;
       color: var(--text);
-      margin-bottom: 8px;
-      line-height: 1.4;
+      line-height: 1.45;
+      margin-bottom: 6px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -327,96 +492,219 @@
     .product-desc {
       font-size: 12px;
       color: var(--text3);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      line-height: 1.6;
+    }
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
     }
     .product-price {
       display: flex;
       align-items: baseline;
-      gap: 8px;
-      margin-bottom: 14px;
+      gap: 6px;
     }
     .price-now {
       font-size: 22px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--accent);
     }
     .price-orig {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text3);
       text-decoration: line-through;
     }
-    .product-actions { display: flex; gap: 8px; }
-    .product-actions button {
-      flex: 1;
-      padding: 10px;
-      border-radius: var(--radius-sm);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      transition: all 0.2s;
-    }
-    .btn-cart {
+    .btn-add-cart {
       background: var(--accent-light);
       color: var(--accent);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
     }
-    .btn-cart:hover { background: var(--accent); color: white; }
-    .btn-detail {
-      background: var(--text);
-      color: white;
-    }
-    .btn-detail:hover { background: #333; }
+    .btn-add-cart:hover { background: var(--accent); color: white; }
 
-    /* ─── How It Works ─── */
+    /* ═══════════════════════════════
+       PAYMENT BANNER
+    ═══════════════════════════════ */
+    .payment-section {
+      max-width: var(--max-w);
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .payment-banner {
+      background: linear-gradient(135deg, #1C1917 0%, #292524 100%);
+      border-radius: 28px;
+      padding: 52px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .payment-banner::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(220,123,81,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .payment-left h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    .payment-left p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .payment-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .payment-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .step-icon {
+      width: 32px; height: 32px;
+      background: rgba(220,123,81,0.2);
+      border: 1px solid rgba(220,123,81,0.4);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .payment-step span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+    }
+    .payment-codes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .payment-code-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    .payment-code-card .qr-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .qr-placeholder {
+      width: 120px;
+      height: 120px;
+      background: white;
+      border-radius: 12px;
+      margin: 0 auto 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .qr-placeholder:hover { transform: scale(1.03); }
+    .qr-placeholder .qr-icon { font-size: 28px; }
+    .qr-placeholder .qr-text {
+      font-size: 10px;
+      color: var(--text3);
+      font-weight: 600;
+    }
+    .qr-note { font-size: 11px; color: rgba(255,255,255,0.4); }
+
+    /* ═══════════════════════════════
+       HOW IT WORKS
+    ═══════════════════════════════ */
     .how-section {
       background: white;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      margin: 40px 0;
     }
     .how-inner {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 64px 20px;
     }
-    .how-inner h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 700;
+    .how-inner > h2 {
       text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
       margin-bottom: 48px;
+      letter-spacing: -0.3px;
     }
     .how-steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 32px;
     }
-    .how-step { text-align: center; }
+    .how-step {
+      text-align: center;
+      padding: 32px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      position: relative;
+    }
+    .how-step:hover {
+      border-color: rgba(220,123,81,0.3);
+      box-shadow: var(--shadow);
+    }
     .step-num {
       width: 56px; height: 56px;
       background: var(--accent-light);
       color: var(--accent);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
-      font-weight: 700;
-      font-family: 'Playfair Display', serif;
-      margin: 0 auto 16px;
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 auto 20px;
     }
-    .how-step h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-    .how-step p { font-size: 13px; color: var(--text2); line-height: 1.7; }
+    .how-step h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    .how-step p { font-size: 13px; color: var(--text2); line-height: 1.8; }
 
-    /* ─── Trust Bar ─── */
+    /* ═══════════════════════════════
+       TRUST BAR
+    ═══════════════════════════════ */
     .trust-bar {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 20px 40px;
+      padding: 0 20px 60px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
     .trust-item {
@@ -429,21 +717,23 @@
       gap: 12px;
     }
     .trust-icon {
-      width: 40px; height: 40px;
+      width: 44px; height: 44px;
       background: var(--accent-light);
-      border-radius: 10px;
+      border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
+      font-size: 22px;
       flex-shrink: 0;
     }
-    .trust-item h4 { font-size: 13px; font-weight: 600; }
+    .trust-item h4 { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
     .trust-item p { font-size: 11px; color: var(--text3); }
 
-    /* ─── Product Detail Modal ─── */
+    /* ═══════════════════════════════
+       PRODUCT DETAIL MODAL
+    ═══════════════════════════════ */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.55);
       z-index: 200;
       display: flex;
       align-items: flex-end;
@@ -456,80 +746,91 @@
     .modal {
       background: white;
       width: 100%;
-      max-width: 600px;
-      max-height: 90vh;
-      border-radius: 24px 24px 0 0;
+      max-width: 640px;
+      max-height: 92vh;
+      border-radius: 28px 28px 0 0;
       overflow-y: auto;
       transform: translateY(100%);
-      transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+      transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
     }
     .modal-overlay.open .modal { transform: translateY(0); }
     .modal-img {
       width: 100%;
       aspect-ratio: 1;
       object-fit: cover;
-      background: #F7F4F0;
+      background: #F5F0EB;
     }
     .modal-close {
       position: absolute;
       top: 16px; right: 16px;
       width: 36px; height: 36px;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.92);
       border: none;
       border-radius: 50%;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       font-size: 18px;
       backdrop-filter: blur(8px);
+      transition: background 0.2s;
     }
-    .modal-body { padding: 24px; }
+    .modal-close:hover { background: white; }
+    .modal-body { padding: 24px 28px 32px; }
     .modal-body .product-cat { margin-bottom: 4px; }
-    .modal-body h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
-    .modal-body .product-desc { margin-bottom: 16px; font-size: 14px; }
+    .modal-body h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; line-height: 1.3; }
+    .modal-body .product-desc { font-size: 14px; color: var(--text2); margin-bottom: 16px; line-height: 1.7; }
     .modal-body .product-price { margin-bottom: 20px; }
     .modal-detail {
-      background: #FAFAF8;
+      background: #FAF7F2;
       border-radius: var(--radius-sm);
       padding: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      display: grid;
+      gap: 8px;
+    }
+    .modal-detail-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 13px;
       color: var(--text2);
     }
-    .modal-detail strong { color: var(--text); }
-    .modal-detail p { margin: 6px 0; }
-    .modal-order {
+    .modal-detail-row .mdi { font-size: 15px; width: 20px; text-align: center; color: var(--accent); }
+    .modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .btn-modal-cart {
+      padding: 14px;
       background: var(--accent-light);
-      border: 1.5px solid var(--accent2);
-      border-radius: var(--radius-sm);
-      padding: 16px;
-      margin-bottom: 20px;
-    }
-    .modal-order h4 {
-      font-size: 14px;
-      font-weight: 600;
       color: var(--accent);
-      margin-bottom: 8px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-    .modal-order p { font-size: 12px; color: var(--text2); line-height: 1.7; }
-    .btn-order {
-      width: 100%;
+    .btn-modal-cart:hover { background: var(--accent); color: white; }
+    .btn-modal-buy {
       padding: 14px;
       background: var(--accent);
       color: white;
       border: none;
       border-radius: var(--radius-sm);
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
       transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 4px 16px rgba(220,123,81,0.3);
     }
-    .btn-order:hover { background: #B05523; }
+    .btn-modal-buy:hover { background: var(--accent-dark); }
 
-    /* ─── Cart Sidebar ─── */
+    /* ═══════════════════════════════
+       CART SIDEBAR
+    ═══════════════════════════════ */
     .cart-overlay {
       position: fixed;
       inset: 0;
@@ -543,54 +844,67 @@
     .cart-sidebar {
       position: fixed;
       top: 0; right: 0;
-      width: 380px;
-      max-width: 90vw;
+      width: 400px;
+      max-width: 92vw;
       height: 100%;
       background: white;
       z-index: 301;
       transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+      transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
       display: flex;
       flex-direction: column;
+      box-shadow: -10px 0 40px rgba(0,0,0,0.15);
     }
     .cart-overlay.open .cart-sidebar { transform: translateX(0); }
     .cart-header {
-      padding: 20px;
+      padding: 24px;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .cart-header h3 { font-size: 18px; font-weight: 700; }
+    .cart-header h3 {
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
     .cart-close {
       background: none; border: none;
       cursor: pointer;
-      font-size: 22px;
+      font-size: 24px;
       color: var(--text2);
-      padding: 4px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
     }
+    .cart-close:hover { background: var(--bg); }
     .cart-items {
       flex: 1;
       overflow-y: auto;
-      padding: 16px 20px;
+      padding: 16px 24px;
     }
     .cart-empty {
       text-align: center;
       padding: 60px 20px;
       color: var(--text3);
     }
-    .cart-empty p { font-size: 14px; margin-top: 8px; }
+    .cart-empty .ce-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.5; }
+    .cart-empty p { font-size: 14px; }
     .cart-item {
       display: flex;
-      gap: 12px;
-      padding: 12px 0;
+      gap: 14px;
+      padding: 14px 0;
       border-bottom: 1px solid var(--border);
     }
+    .cart-item:last-child { border-bottom: none; }
     .cart-item-img {
-      width: 64px; height: 64px;
-      border-radius: 10px;
+      width: 72px; height: 72px;
+      border-radius: 12px;
       object-fit: cover;
-      background: #F7F4F0;
+      background: #F5F0EB;
       flex-shrink: 0;
     }
     .cart-item-info { flex: 1; min-width: 0; }
@@ -602,7 +916,34 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .cart-item-price { font-size: 14px; color: var(--accent); font-weight: 700; }
+    .cart-item-ops {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+    .cart-item-price { font-size: 15px; color: var(--accent); font-weight: 700; }
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 2px;
+    }
+    .qty-btn {
+      width: 26px; height: 26px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s;
+      color: var(--text2);
+    }
+    .qty-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .qty-num { font-size: 13px; font-weight: 600; min-width: 20px; text-align: center; }
     .cart-item-remove {
       background: none; border: none;
       cursor: pointer;
@@ -610,38 +951,44 @@
       font-size: 18px;
       align-self: flex-start;
       padding: 2px;
+      transition: color 0.2s;
     }
+    .cart-item-remove:hover { color: #E53935; }
     .cart-footer {
-      padding: 20px;
+      padding: 20px 24px 28px;
       border-top: 1px solid var(--border);
+      background: white;
     }
-    .cart-total {
+    .cart-total-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 16px;
     }
-    .cart-total span { font-size: 14px; color: var(--text2); }
-    .cart-total strong { font-size: 22px; color: var(--accent); }
+    .cart-total-row span { font-size: 14px; color: var(--text2); }
+    .cart-total-row strong { font-size: 24px; color: var(--accent); }
     .btn-checkout {
       width: 100%;
-      padding: 14px;
+      padding: 15px;
       background: var(--accent);
       color: white;
       border: none;
       border-radius: var(--radius-sm);
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(220,123,81,0.35);
     }
-    .btn-checkout:hover { background: #B05523; }
+    .btn-checkout:hover { background: var(--accent-dark); transform: translateY(-1px); }
 
-    /* ─── Order Modal ─── */
+    /* ═══════════════════════════════
+       CHECKOUT / ORDER MODAL
+    ═══════════════════════════════ */
     .order-modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       z-index: 400;
       display: flex;
       align-items: center;
@@ -656,124 +1003,297 @@
       background: white;
       border-radius: var(--radius);
       width: 100%;
-      max-width: 460px;
+      max-width: 500px;
+      max-height: 92vh;
+      overflow-y: auto;
       padding: 32px;
-      transform: scale(0.9);
-      transition: transform 0.3s;
+      transform: scale(0.92) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
     }
-    .order-modal-overlay.open .order-modal { transform: scale(1); }
-    .order-modal h3 {
+    .order-modal-overlay.open .order-modal { transform: scale(1) translateY(0); }
+    .order-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .order-modal-header h3 { font-size: 20px; font-weight: 800; }
+    .order-close-btn {
+      width: 36px; height: 36px;
+      background: var(--bg);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
       font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 8px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+      color: var(--text2);
     }
-    .order-modal > p { font-size: 13px; color: var(--text2); margin-bottom: 24px; }
+    .order-close-btn:hover { background: var(--border); }
+    .order-items-summary {
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      margin-bottom: 20px;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+    .order-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      font-size: 13px;
+    }
+    .order-item-row .oi-name { color: var(--text2); flex: 1; }
+    .order-item-row .oi-qty { color: var(--text3); margin: 0 8px; }
+    .order-item-row .oi-price { font-weight: 600; color: var(--accent); }
+    .order-total-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: var(--accent-light);
+      border-radius: var(--radius-sm);
+      margin-bottom: 24px;
+    }
+    .order-total-row span { font-size: 14px; font-weight: 600; }
+    .order-total-row strong { font-size: 20px; color: var(--accent); }
     .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .form-group label .required { color: var(--accent); margin-left: 2px; }
     .form-group input, .form-group textarea {
       width: 100%;
       padding: 12px 14px;
       border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-xs);
       font-size: 14px;
-      font-family: inherit;
-      transition: border-color 0.2s;
       background: white;
+      transition: border-color 0.2s;
+      color: var(--text);
     }
     .form-group input:focus, .form-group textarea:focus {
       outline: none;
       border-color: var(--accent);
     }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text3); }
     .form-group textarea { resize: vertical; min-height: 80px; }
-    .order-success {
+
+    /* Payment QR section in order modal */
+    .payment-qr-section {
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .payment-qr-section h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+    .payment-qr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .payment-qr-item {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px;
       text-align: center;
-      padding: 32px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .payment-qr-item:hover { border-color: var(--accent); }
+    .payment-qr-item.selected { border-color: var(--accent); background: var(--accent-light); }
+    .payment-qr-item .pqi-icon { font-size: 28px; margin-bottom: 6px; }
+    .payment-qr-item .pqi-name { font-size: 13px; font-weight: 700; color: var(--text); }
+    .payment-qr-item .pqi-hint { font-size: 11px; color: var(--text3); }
+    .qr-display {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      text-align: center;
+      margin-top: 12px;
       display: none;
     }
-    .order-success.show { display: block; }
-    .order-success .emoji { font-size: 48px; margin-bottom: 12px; }
-    .order-success h3 { margin-bottom: 8px; }
-    .order-success p { font-size: 14px; color: var(--text2); }
+    .qr-display.show { display: block; }
+    .qr-display .qr-big {
+      width: 160px;
+      height: 160px;
+      background: #f9f9f9;
+      border-radius: 12px;
+      margin: 0 auto 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .qr-display .qr-big-icon { font-size: 36px; }
+    .qr-display .qr-big-text { font-size: 11px; color: var(--text3); font-weight: 600; }
+    .qr-display .qr-amount {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .qr-display .qr-tip { font-size: 12px; color: var(--text2); }
 
-    /* ─── Footer ─── */
+    .btn-submit-order {
+      width: 100%;
+      padding: 15px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(220,123,81,0.35);
+    }
+    .btn-submit-order:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    /* Order success */
+    .order-success-panel {
+      text-align: center;
+      padding: 24px 0;
+      display: none;
+    }
+    .order-success-panel.show { display: block; }
+    .order-success-panel .osp-icon { font-size: 60px; margin-bottom: 16px; }
+    .order-success-panel h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; color: var(--text); }
+    .order-success-panel p { font-size: 14px; color: var(--text2); line-height: 1.8; }
+    .order-success-panel .order-id {
+      display: inline-block;
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text2);
+      margin: 12px 0;
+      font-family: monospace;
+    }
+
+    /* ═══════════════════════════════
+       TOAST
+    ═══════════════════════════════ */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1C1917;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      z-index: 600;
+      transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.success { background: #166534; }
+    .toast.error { background: #991B1B; }
+
+    /* ═══════════════════════════════
+       FOOTER
+    ═══════════════════════════════ */
     footer {
-      background: #1A1A1A;
-      color: rgba(255,255,255,0.6);
+      background: #1C1917;
+      color: rgba(255,255,255,0.5);
       margin-top: 60px;
     }
     .footer-inner {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 48px 20px;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1.5fr 1fr 1fr;
       gap: 40px;
-      align-items: start;
     }
     footer h4 {
       color: white;
-      font-size: 16px;
-      margin-bottom: 12px;
-      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      margin-bottom: 14px;
+      font-weight: 700;
     }
-    footer p, footer a { font-size: 13px; line-height: 1.8; }
+    footer p, footer a { font-size: 13px; line-height: 2; }
+    footer a { transition: color 0.2s; }
     footer a:hover { color: white; }
-    .footer-contact { display: flex; flex-direction: column; gap: 8px; }
+    .footer-brand p { color: rgba(255,255,255,0.4); margin-top: 8px; font-size: 13px; }
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .footer-contact-item .fci-icon { font-size: 16px; }
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: 1px solid rgba(255,255,255,0.08);
       text-align: center;
       padding: 20px;
       font-size: 12px;
+      color: rgba(255,255,255,0.3);
     }
 
-    /* ─── Scroll Reveal ─── */
-    .reveal {
+    /* ═══════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════ */
+    .fade-up {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s, transform 0.6s;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .reveal.show { opacity: 1; transform: translateY(0); }
+    .fade-up.show { opacity: 1; transform: translateY(0); }
 
-    /* ─── Notification Toast ─── */
-    .toast {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(80px);
-      background: #1A1A1A;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 500;
-      z-index: 500;
-      transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
-      white-space: nowrap;
-    }
-    .toast.show { transform: translateX(-50%) translateY(0); }
-
-    /* ─── Responsive ─── */
-    @media (max-width: 768px) {
-      .hero-card { flex-direction: column; padding: 32px 24px; text-align: center; }
-      .hero-card .hero-text p { margin: 0 auto 24px; }
+    /* ═══════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════ */
+    @media (max-width: 900px) {
+      .hero-card { grid-template-columns: 1fr; text-align: center; padding: 36px 28px; }
+      .hero-card .hero-desc { margin: 0 auto 28px; }
       .hero-badges { justify-content: center; }
-      .hero-img { width: 200px; height: 200px; }
-      .header-nav { display: none; }
-      .menu-toggle { display: block; }
+      .hero-buttons { justify-content: center; }
+      .hero-image { width: 220px; height: 220px; margin: 0 auto; order: -1; }
+      .how-steps { grid-template-columns: 1fr; }
+      .trust-bar { grid-template-columns: repeat(2, 1fr); }
+      .payment-banner { grid-template-columns: 1fr; gap: 32px; padding: 36px 28px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
       .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .product-info { padding: 12px; }
       .product-name { font-size: 13px; }
       .product-desc { display: none; }
       .price-now { font-size: 18px; }
-      .product-actions { flex-direction: column; gap: 6px; }
-      .product-actions button { font-size: 12px; padding: 8px; }
+      .product-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .btn-add-cart { width: 100%; text-align: center; }
+      .product-quick-add { opacity: 1; transform: scale(0.9) translateY(0); }
+      .trust-bar { grid-template-columns: 1fr 1fr; gap: 10px; }
       .footer-inner { grid-template-columns: 1fr; }
-      .how-step { text-align: left; display: flex; gap: 16px; align-items: flex-start; }
-      .step-num { margin: 0; flex-shrink: 0; }
+      .modal-body { padding: 20px; }
+      .modal-actions { grid-template-columns: 1fr; }
+      .payment-codes { grid-template-columns: 1fr; }
+      .payment-qr-grid { grid-template-columns: 1fr; }
     }
-    @media (max-width: 400px) {
-      .product-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .section-title { font-size: 22px; }
+    @media (max-width: 380px) {
+      .product-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .hero-card { padding: 28px 20px; }
+      .hero-title { font-size: 26px; }
     }
   </style>
 </head>
@@ -782,94 +1302,148 @@
   <!-- Header -->
   <header>
     <div class="header-inner">
-      <a href="#" class="logo">好物<span>精选</span></a>
-      <nav class="header-nav">
-        <a href="#products" class="active">精选好物</a>
-        <a href="#how">如何下单</a>
-        <a href="#about">关于我们</a>
-      </nav>
-      <button class="cart-btn" onclick="openCart()" aria-label="购物车">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
-        </svg>
-        <span class="cart-badge" id="cartBadge">0</span>
-      </button>
-      <button class="menu-toggle" onclick="openCart()" aria-label="菜单">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
+      <div class="logo">
+        <div class="logo-icon">好</div>
+        <div class="logo-text">好物<span>集</span></div>
+      </div>
+      <div class="header-actions">
+        <a class="header-wechat" href="javascript:void(0)" onclick="showWechatTip()">
+          💬 客服微信
+        </a>
+        <button class="cart-btn" onclick="openCart()" aria-label="购物车">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-card reveal">
+    <div class="hero-card fade-up">
       <div class="hero-text">
-        <h1>严选<span><em>高性价比</em></span>好物</h1>
-        <p>精选家居神器、实用小工具、品质美妆耗材。1688同源品质，厂家直发，售后无忧。</p>
+        <div class="hero-tag">🏠 厂家直发 · 品质严选</div>
+        <h1 class="hero-title">严选<span><em>高性价比</em></span>好物<br>品质生活从精选开始</h1>
+        <p class="hero-desc">精选家居神器、实用小工具、品质美妆耗材。1688同源品质，供应商直发，省去中间环节，真正让利给消费者。</p>
         <div class="hero-badges">
-          <span class="hero-badge">✓ 品质严选</span>
-          <span class="hero-badge">✓ 厂家直发</span>
-          <span class="hero-badge">✓ 7天无理由</span>
-          <span class="hero-badge">✓ 急速发货</span>
+          <span class="hero-badge">✅ 品质严选</span>
+          <span class="hero-badge">✅ 厂家直发</span>
+          <span class="hero-badge">✅ 7天无理由</span>
+          <span class="hero-badge">✅ 急速发货</span>
         </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="#products" class="btn-primary">立即选购 →</a>
-          <a href="#how" class="btn-secondary">如何下单</a>
+        <div class="hero-buttons">
+          <a href="#products" class="btn-accent">立即选购 →</a>
+          <a href="#how" class="btn-ghost">如何下单</a>
         </div>
       </div>
-      <div class="hero-visual">
-        <img class="hero-img" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=520&h=520&fit=crop&q=80" alt="精选好物" />
-      </div>
+      <img class="hero-image" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=560&h=560&fit=crop&q=85" alt="精选好物" />
     </div>
   </section>
 
-  <!-- Section: Products -->
-  <div class="section-header reveal">
-    <div>
-      <h2 class="section-title">精选好物</h2>
-      <p class="section-sub" style="margin-top:6px;">精心挑选，品质保障</p>
+  <!-- Announcement -->
+  <div class="announcement">
+    <div class="announcement-bar">
+      <div class="announcement-icon">🔥</div>
+      <span>新店开业 · 全场限时特惠 · 下单即送精美礼品一份</span>
     </div>
+  </div>
+
+  <!-- Section Header -->
+  <div class="section-header fade-up">
+    <div class="section-title-wrap">
+      <h2>精选好物</h2>
+      <p>精心挑选每一件，品质有保障</p>
+    </div>
+    <a href="#products" class="section-more">查看全部 →</a>
   </div>
 
   <!-- Category Tabs -->
   <div class="cat-tabs" id="catTabs">
-    <button class="cat-tab active" onclick="filterCat('all', this)">全部</button>
+    <button class="cat-tab active" onclick="filterCat('all', this)">🏪 全部</button>
     <button class="cat-tab" onclick="filterCat('home', this)">🏠 家居好物</button>
-    <button class="cat-tab" onclick="filterCat('gadget', this)">🔧 实用小工具</button>
+    <button class="cat-tab" onclick="filterCat('gadget', this)">🔧 实用工具</button>
     <button class="cat-tab" onclick="filterCat('beauty', this)">💄 美妆耗材</button>
   </div>
 
   <!-- Product Grid -->
-  <div class="product-grid" id="productGrid">
-    <!-- Products injected by JS -->
-  </div>
+  <div class="product-grid" id="productGrid"></div>
+
+  <!-- Payment Section -->
+  <section class="payment-section fade-up" id="pay">
+    <div class="payment-banner">
+      <div class="payment-left">
+        <h2>安全支付 · 放心购物</h2>
+        <p>支持微信、支付宝扫码支付，交易安全有保障。提交订单后扫码付款，24小时内发货。</p>
+        <div class="payment-steps">
+          <div class="payment-step">
+            <div class="step-icon">1</div>
+            <span>选择商品加入购物车，填写收货信息</span>
+          </div>
+          <div class="payment-step">
+            <div class="step-icon">2</div>
+            <span>选择微信或支付宝扫码支付</span>
+          </div>
+          <div class="payment-step">
+            <div class="step-icon">3</div>
+            <span>支付成功后，24小时内安排发货</span>
+          </div>
+        </div>
+      </div>
+      <div class="payment-codes">
+        <div class="payment-code-card">
+          <div class="qr-label">💚 微信支付</div>
+          <div class="qr-placeholder" onclick="showPaymentTip('wechat')">
+            <div class="qr-icon">🟢</div>
+            <div class="qr-text">点击上传<br>微信收款码</div>
+          </div>
+          <div class="qr-note">长按识别 · 安全支付</div>
+        </div>
+        <div class="payment-code-card">
+          <div class="qr-label">🔵 支付宝</div>
+          <div class="qr-placeholder" onclick="showPaymentTip('alipay')">
+            <div class="qr-icon">🔵</div>
+            <div class="qr-text">点击上传<br>支付宝收款码</div>
+          </div>
+          <div class="qr-note">扫码即付 · 方便快捷</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- How It Works -->
   <section class="how-section" id="how">
-    <div class="how-inner">
-      <h2 class="reveal">购物流程 — 简单3步</h2>
-      <div class="how-steps reveal">
+    <div class="how-inner fade-up">
+      <h2>购物流程 — 简单4步</h2>
+      <div class="how-steps">
         <div class="how-step">
           <div class="step-num">1</div>
           <div>
             <h3>浏览选品</h3>
-            <p>在网站上浏览心仪商品，了解详情和价格，直接下单购买。</p>
+            <p>在网站浏览心仪商品，查看详情和价格。商品来自1688同源供应商，品质有保障。</p>
           </div>
         </div>
         <div class="how-step">
           <div class="step-num">2</div>
           <div>
-            <h3>联系确认</h3>
-            <p>下单后联系客服，确认收货地址和商品信息，确保无误。</p>
+            <h3>提交订单</h3>
+            <p>将商品加入购物车，填写收货地址和联系方式，提交订单。</p>
           </div>
         </div>
         <div class="how-step">
           <div class="step-num">3</div>
           <div>
+            <h3>扫码支付</h3>
+            <p>使用微信或支付宝扫描收款码完成支付，支持转账到银行卡。</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-num">4</div>
+          <div>
             <h3>厂家直发</h3>
-            <p>供应商直接发货到您手中，省去中间环节，省钱省心。</p>
+            <p>供应商直接发货到您手中，快递配送上门，省心省力。</p>
           </div>
         </div>
       </div>
@@ -877,29 +1451,29 @@
   </section>
 
   <!-- Trust Bar -->
-  <div class="trust-bar">
-    <div class="trust-item reveal">
+  <div class="trust-bar fade-up">
+    <div class="trust-item">
       <div class="trust-icon">🏭</div>
       <div>
         <h4>厂家直发</h4>
         <p>跳过中间商</p>
       </div>
     </div>
-    <div class="trust-item reveal">
+    <div class="trust-item">
       <div class="trust-icon">✅</div>
       <div>
         <h4>品质严选</h4>
         <p>精选爆款好物</p>
       </div>
     </div>
-    <div class="trust-item reveal">
+    <div class="trust-item">
       <div class="trust-icon">🚚</div>
       <div>
         <h4>急速发货</h4>
-        <p>48小时内发出</p>
+        <p>48h内发出</p>
       </div>
     </div>
-    <div class="trust-item reveal">
+    <div class="trust-item">
       <div class="trust-icon">💬</div>
       <div>
         <h4>微信客服</h4>
@@ -908,32 +1482,33 @@
     </div>
   </div>
 
-  <!-- About -->
-  <section style="max-width:700px;margin:0 auto;padding:40px 20px;text-align:center;" id="about" class="reveal">
-    <h2 style="font-family:'Playfair Display',serif;font-size:26px;margin-bottom:12px;">关于我们</h2>
-    <p style="font-size:14px;color:var(--text2);line-height:1.8;max-width:500px;margin:0 auto;">
-      我们精选1688、拼多多等平台的爆款好物，严格筛选品质，为您提供高性价比的家居、小工具、美妆耗材类产品。所有商品均由供应商直接发货，无库存压力，品质有保障。
-    </p>
-    <p style="margin-top:16px;font-size:13px;color:var(--accent);font-weight:600;">
-      📱 微信/手机：13702225354
-    </p>
-  </section>
-
   <!-- Footer -->
-  <footer id="contact">
+  <footer>
     <div class="footer-inner">
-      <div>
-        <h4>好物精选</h4>
-        <p>严选高性价比好物<br>让每一分钱都花得值</p>
+      <div class="footer-brand">
+        <h4>好物集</h4>
+        <p>严选高性价比好物，让每一分钱都花得值。<br>专注家居、工具、美妆好物精选。</p>
       </div>
-      <div class="footer-contact">
+      <div>
+        <h4>快速链接</h4>
+        <a href="#products">精选好物</a><br>
+        <a href="#how">如何下单</a><br>
+        <a href="#pay">支付方式</a><br>
+      </div>
+      <div>
         <h4>联系我们</h4>
-        <a href="#">📱 微信/手机：13702225354</a>
-        <a href="mailto:260409473@qq.com">📧 260409473@qq.com</a>
+        <div class="footer-contact-item">
+          <span class="fci-icon">💬</span>
+          <span>微信/手机：13702225354</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="fci-icon">📧</span>
+          <span>260409473@qq.com</span>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      © 2026 好物精选 · 专注严选好物 · 鄂ICP备xxxxxxx号
+      © 2026 好物集 · 专注严选好物
     </div>
   </footer>
 
@@ -941,21 +1516,21 @@
   <div class="cart-overlay" id="cartOverlay" onclick="closeCart()">
     <div class="cart-sidebar" onclick="event.stopPropagation()">
       <div class="cart-header">
-        <h3>🛒 购物车</h3>
+        <h3>🛒 购物车 <span id="cartCountLabel" style="font-size:13px;font-weight:400;color:var(--text3);"></span></h3>
         <button class="cart-close" onclick="closeCart()">×</button>
       </div>
       <div class="cart-items" id="cartItems">
         <div class="cart-empty" id="cartEmpty">
-          <div style="font-size:40px;">🛒</div>
+          <div class="ce-icon">🛒</div>
           <p>购物车是空的<br>去挑选心仪好物吧</p>
         </div>
       </div>
       <div class="cart-footer" id="cartFooter" style="display:none;">
-        <div class="cart-total">
-          <span>合计</span>
+        <div class="cart-total-row">
+          <span>合计（含运费）</span>
           <strong id="cartTotal">¥0</strong>
         </div>
-        <button class="btn-checkout" onclick="openOrder()">立即下单</button>
+        <button class="btn-checkout" onclick="openCheckout()">去结算 →</button>
       </div>
     </div>
   </div>
@@ -968,58 +1543,99 @@
       <div class="modal-body">
         <div class="product-cat" id="modalCat"></div>
         <h2 id="modalName"></h2>
-        <p class="product-desc" id="modalDesc" style="color:var(--text2);font-size:14px;margin:8px 0 16px;"></p>
+        <p class="product-desc" id="modalDesc"></p>
         <div class="product-price">
           <span class="price-now" id="modalPrice"></span>
           <span class="price-orig" id="modalOrig"></span>
         </div>
         <div class="modal-detail">
-          <p><strong>📦 发货方式：</strong>供应商直发，48小时内发货</p>
-          <p><strong>🚚 物流：</strong>快递配送，送货上门</p>
-          <p><strong>🔄 售后：</strong>7天无理由退换（不影响二次销售）</p>
+          <div class="modal-detail-row">
+            <span class="mdi">📦</span>
+            <span><strong>发货方式：</strong>供应商直发，下单后48小时内发出</span>
+          </div>
+          <div class="modal-detail-row">
+            <span class="mdi">🚚</span>
+            <span><strong>物流：</strong>快递配送，全国送货上门</span>
+          </div>
+          <div class="modal-detail-row">
+            <span class="mdi">🔄</span>
+            <span><strong>售后：</strong>7天无理由退换（不影响二次销售）</span>
+          </div>
+          <div class="modal-detail-row">
+            <span class="mdi">💡</span>
+            <span><strong>说明：</strong>商品由1688供应商直接发货，无需囤货</span>
+          </div>
         </div>
-        <div class="modal-order">
-          <h4>💡 下单方式</h4>
-          <p>点击下方"立即购买"按钮，填写收货信息。我们会尽快联系您确认订单，安排发货。</p>
+        <div class="modal-actions">
+          <button class="btn-modal-cart" onclick="addFromDetail()">🛒 加入购物车</button>
+          <button class="btn-modal-buy" onclick="buyNow()">立即购买</button>
         </div>
-        <button class="btn-order" onclick="addToCartFromDetail()">
-          🛒 加入购物车
-        </button>
       </div>
     </div>
   </div>
 
-  <!-- Order Modal -->
+  <!-- Checkout / Order Modal -->
   <div class="order-modal-overlay" id="orderModal">
     <div class="order-modal">
-      <button onclick="closeOrder()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--text2);">×</button>
-      <div id="orderForm">
-        <h3>📝 填写订单信息</h3>
-        <p>请填写收货信息，我们将在24小时内联系您确认</p>
-        <div class="form-group">
-          <label>收货人姓名 *</label>
-          <input type="text" id="buyerName" placeholder="请输入姓名" />
+      <div id="orderFormPanel">
+        <div class="order-modal-header">
+          <h3>📝 确认订单</h3>
+          <button class="order-close-btn" onclick="closeOrder()">×</button>
+        </div>
+        <div class="order-items-summary" id="orderItemsSummary"></div>
+        <div class="order-total-row">
+          <span>实付金额</span>
+          <strong id="orderTotalAmount">¥0</strong>
         </div>
         <div class="form-group">
-          <label>联系电话 *</label>
-          <input type="tel" id="buyerPhone" placeholder="请输入手机号" />
+          <label>收货人姓名 <span class="required">*</span></label>
+          <input type="text" id="buyerName" placeholder="请输入收货人姓名" />
         </div>
         <div class="form-group">
-          <label>收货地址 *</label>
-          <textarea id="buyerAddr" placeholder="省/市/区 + 详细地址"></textarea>
+          <label>联系电话 <span class="required">*</span></label>
+          <input type="tel" id="buyerPhone" placeholder="请输入手机号码" />
         </div>
         <div class="form-group">
-          <label>备注（选填）</label>
-          <input type="text" id="buyerNote" placeholder="颜色、尺码、数量等要求" />
+          <label>收货地址 <span class="required">*</span></label>
+          <textarea id="buyerAddr" placeholder="请填写详细收货地址（省/市/区 + 街道门牌号）"></textarea>
         </div>
-        <button class="btn-order" onclick="submitOrder()">提交订单</button>
+        <div class="form-group">
+          <label>备注</label>
+          <input type="text" id="buyerNote" placeholder="颜色、尺码、数量等特殊要求（选填）" />
+        </div>
+        <!-- Payment QR Section -->
+        <div class="payment-qr-section">
+          <h4>💳 选择支付方式</h4>
+          <div class="payment-qr-grid">
+            <div class="payment-qr-item" id="qr-wechat" onclick="selectPayment('wechat')">
+              <div class="pqi-icon">🟢</div>
+              <div class="pqi-name">微信支付</div>
+              <div class="pqi-hint">扫码转账</div>
+            </div>
+            <div class="payment-qr-item" id="qr-alipay" onclick="selectPayment('alipay')">
+              <div class="pqi-icon">🔵</div>
+              <div class="pqi-name">支付宝</div>
+              <div class="pqi-hint">扫码转账</div>
+            </div>
+          </div>
+          <div class="qr-display" id="qrDisplay">
+            <div class="qr-big">
+              <div class="qr-big-icon" id="qrIcon">🟢</div>
+              <div class="qr-big-text" id="qrText">请扫描二维码支付</div>
+            </div>
+            <div class="qr-amount" id="qrAmount">¥0</div>
+            <div class="qr-tip" id="qrTip">支付完成后，截图保存凭证，联系客服确认发货</div>
+          </div>
+        </div>
+        <button class="btn-submit-order" onclick="submitOrder()">💳 提交订单</button>
       </div>
-      <div class="order-success" id="orderSuccess">
-        <div class="emoji">✅</div>
+      <div class="order-success-panel" id="orderSuccessPanel">
+        <div class="osp-icon">🎉</div>
         <h3>订单提交成功！</h3>
-        <p>我们已收到您的订单信息<br>客服将在24小时内联系您确认<br>请保持电话畅通</p>
+        <div class="order-id" id="successOrderId"></div>
+        <p>我们已收到您的订单信息<br>请按下方提示完成支付，支付完成后<br><strong style="color:var(--accent)">联系微信：13702225354 确认发货</strong><br>客服将在24小时内安排发货，请保持电话畅通</p>
         <br>
-        <button class="btn-primary" onclick="closeOrder()">继续购物</button>
+        <button class="btn-accent" onclick="closeOrder()" style="display:inline-flex;">继续购物</button>
       </div>
     </div>
   </div>
@@ -1028,188 +1644,70 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // ─── Product Data ───
+    /* ── Product Data ── */
     const products = [
-      {
-        id: 1,
-        name: "多功能折叠收纳盒",
-        cat: "家居好物",
-        catKey: "home",
-        desc: "可折叠收纳箱，节省空间，搬家必备。适用于衣物、玩具、杂物整理。",
-        price: 29.9,
-        origPrice: 49.9,
-        tag: "爆款",
-        img: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=600&h=600&fit=crop&q=80"
-      },
-      {
-        id: 2,
-        name: "迷你桌面手持挂烫机",
-        cat: "家居好物",
-        catKey: "home",
-        desc: "小型便携熨斗，快速除皱，轻巧不占地。旅行出差随身带。",
-        price: 39.9,
-        origPrice: 69.9,
-        tag: "热卖",
-        img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=600&fit=crop&q=80"
-      },
-      {
-        id: 3,
-        name: "智能感应小夜灯",
-        cat: "家居好物",
-        catKey: "home",
-        desc: "人体感应，柔光不刺眼。安装在卧室、走廊、卫生间，自动开关灯。",
-        price: 19.9,
-        origPrice: 35.9,
-        tag: "新品",
-        img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop&q=80"
-      },
-      {
-        id: 4,
-        name: "不锈钢多功能切菜器",
-        cat: "家居好物",
-        catKey: "home",
-        desc: "刨丝器+切片器+切丝器，一机多用。厨房备菜效率翻倍。",
-        price: 24.9,
-        origPrice: 42.0,
-        tag: "爆款",
-        img: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=600&h=600&fit=crop&q=80"
-      },
-      {
-        id: 5,
-        name: "USB充电电动牙刷",
-        cat: "美妆耗材",
-        catKey: "beauty",
-        desc: "高频声波震动，深层清洁牙齿。USB充电，全身水洗，超长续航。",
-        price: 29.9,
-        origPrice: 59.9,
-        tag: "热卖",
-        img: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=600&h=600&fit=crop&q=80"
-      },
-      {
-        id: 6,
-        name: "便携式旅行分装瓶套装",
-        cat: "美妆耗材",
-        catKey: "beauty",
-        desc: "6件套装，乳液瓶+洗漱瓶+喷雾。出行必备，过安检无忧。",
-        price: 15.9,
-        origPrice: 28.0,
-        tag: "",
-        img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&h=600&fit=crop&q=80"
-      },
-      {
-        id: 7,
-        name: "磁吸式数据线收纳扣",
-        cat: "实用小工具",
-        catKey: "gadget",
-        desc: "桌面理线神器，磁吸收纳，告别乱线。支持多种线材直径。",
-        price: 12.9,
-        origPrice: 22.0,
-        tag: "",
-        img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=600&fit=crop&q=80"
-      },
-      {
-        id: 8,
-        name: "迷你手机支架折叠式",
-        cat: "实用小工具",
-        catKey: "gadget",
-        desc: "铝合金材质，可调角度。看剧、视频通话、直播必备神器。",
-        price: 16.9,
-        origPrice: 29.9,
-        tag: "新品",
-        img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=600&fit=crop&q=80"
-      },
-      {
-        id: 9,
-        name: "家用全自动测量血压计",
-        cat: "家居好物",
-        catKey: "home",
-        desc: "大屏显示，一键测量。高清语音播报，适合中老年用户。",
-        price: 68.0,
-        origPrice: 128.0,
-        tag: "推荐",
-        img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=600&fit=crop&q=80"
-      },
-      {
-        id: 10,
-        name: "化妆刷清洁晾干垫",
-        cat: "美妆耗材",
-        catKey: "beauty",
-        desc: "硅胶材质，可折叠清洗。晾干美妆刷、化妆蛋，干净卫生。",
-        price: 14.9,
-        origPrice: 25.0,
-        tag: "",
-        img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&q=80"
-      },
-      {
-        id: 11,
-        name: "多功能螺丝刀套装 32件",
-        cat: "实用小工具",
-        catKey: "gadget",
-        desc: "精密批头套装，家用维修必备。防滑手柄，快速换头。",
-        price: 26.9,
-        origPrice: 48.0,
-        tag: "爆款",
-        img: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&h=600&fit=crop&q=80"
-      },
-      {
-        id: 12,
-        name: "LED护眼台灯 触控调光",
-        cat: "家居好物",
-        catKey: "home",
-        desc: "三档亮度可调，柔光护眼。USB充电，无频闪，适合学习办公。",
-        price: 34.9,
-        origPrice: 59.9,
-        tag: "热卖",
-        img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&h=600&fit=crop&q=80"
-      }
+      { id:1, name:"多功能折叠收纳箱", cat:"家居好物", catKey:"home", desc:"可折叠收纳箱，节省空间，搬家必备。适用于衣物、玩具、杂物整理。", price:29.9, origPrice:49.9, tag:"爆款", img:"https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=600&h=600&fit=crop&q=80" },
+      { id:2, name:"迷你手持挂烫机", cat:"家居好物", catKey:"home", desc:"小型便携熨斗，快速除皱，轻巧不占地。旅行出差随身带。", price:39.9, origPrice:69.9, tag:"热卖", img:"https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=600&fit=crop&q=80" },
+      { id:3, name:"人体感应智能小夜灯", cat:"家居好物", catKey:"home", desc:"人体感应，柔光不刺眼。安装在卧室、走廊、卫生间，自动开关灯。", price:19.9, origPrice:35.9, tag:"新品", img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop&q=80" },
+      { id:4, name:"不锈钢多功能切菜器", cat:"家居好物", catKey:"home", desc:"刨丝器+切片器+切丝器，一机多用。厨房备菜效率翻倍。", price:24.9, origPrice:42.0, tag:"爆款", img:"https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=600&h=600&fit=crop&q=80" },
+      { id:5, name:"USB充电声波电动牙刷", cat:"美妆耗材", catKey:"beauty", desc:"高频声波震动，深层清洁牙齿。USB充电，全身水洗，超长续航。", price:29.9, origPrice:59.9, tag:"热卖", img:"https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=600&h=600&fit=crop&q=80" },
+      { id:6, name:"便携旅行分装瓶套装", cat:"美妆耗材", catKey:"beauty", desc:"6件套装，乳液瓶+洗漱瓶+喷雾。出行必备，过安检无忧。", price:15.9, origPrice:28.0, tag:"", img:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&h=600&fit=crop&q=80" },
+      { id:7, name:"磁吸收纳数据线理线扣", cat:"实用工具", catKey:"gadget", desc:"桌面理线神器，磁吸收纳，告别乱线。支持多种线材直径。", price:12.9, origPrice:22.0, tag:"", img:"https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=600&fit=crop&q=80" },
+      { id:8, name:"铝合金可调手机支架", cat:"实用工具", catKey:"gadget", desc:"铝合金材质，可调角度。看剧、视频通话、直播必备神器。", price:16.9, origPrice:29.9, tag:"新品", img:"https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=600&fit=crop&q=80" },
+      { id:9, name:"家用电子血压计", cat:"家居好物", catKey:"home", desc:"大屏显示，一键测量。高清语音播报，适合中老年用户。", price:68.0, origPrice:128.0, tag:"推荐", img:"https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=600&fit=crop&q=80" },
+      { id:10, name:"硅胶化妆刷晾干垫", cat:"美妆耗材", catKey:"beauty", desc:"硅胶材质，可折叠清洗。晾干美妆刷、化妆蛋，干净卫生。", price:14.9, origPrice:25.0, tag:"", img:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=600&fit=crop&q=80" },
+      { id:11, name:"32件套精密螺丝刀套装", cat:"实用工具", catKey:"gadget", desc:"精密批头套装，家用维修必备。防滑手柄，快速换头。", price:26.9, origPrice:48.0, tag:"爆款", img:"https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&h=600&fit=crop&q=80" },
+      { id:12, name:"LED触控护眼台灯", cat:"家居好物", catKey:"home", desc:"三档亮度可调，柔光护眼。USB充电，无频闪，适合学习办公。", price:34.9, origPrice:59.9, tag:"热卖", img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&h=600&fit=crop&q=80" },
     ];
 
-    // ─── Cart State ───
+    /* ── State ── */
     let cart = [];
     let currentDetailProduct = null;
+    let selectedPayment = null;
 
-    // ─── Render Products ───
+    /* ── Render Products ── */
     function renderProducts(filter = 'all') {
       const grid = document.getElementById('productGrid');
-      const filtered = filter === 'all' ? products : products.filter(p => p.catKey === filter);
-      grid.innerHTML = filtered.map(p => `
-        <div class="product-card reveal" onclick="openDetail(${p.id})">
+      const list = filter === 'all' ? products : products.filter(p => p.catKey === filter);
+      grid.innerHTML = list.map((p, i) => `
+        <div class="product-card fade-up" style="transition-delay:${i * 50}ms" onclick="openDetail(${p.id})">
           <div class="product-img-wrap">
             <img src="${p.img}" alt="${p.name}" loading="lazy" />
             ${p.tag ? `<span class="product-tag">${p.tag}</span>` : ''}
+            <button class="product-quick-add" onclick="event.stopPropagation();quickAdd(${p.id})" title="加入购物车">+</button>
           </div>
           <div class="product-info">
             <div class="product-cat">${p.cat}</div>
             <div class="product-name">${p.name}</div>
             <div class="product-desc">${p.desc}</div>
-            <div class="product-price">
-              <span class="price-now">¥${p.price.toFixed(1)}</span>
-              <span class="price-orig">¥${p.origPrice.toFixed(1)}</span>
-            </div>
-            <div class="product-actions">
-              <button class="btn-cart" onclick="event.stopPropagation();addToCart(${p.id})">加入购物车</button>
-              <button class="btn-detail" onclick="event.stopPropagation();openDetail(${p.id})">查看详情</button>
+            <div class="product-bottom">
+              <div class="product-price">
+                <span class="price-now">¥${p.price.toFixed(1)}</span>
+                <span class="price-orig">¥${p.origPrice.toFixed(1)}</span>
+              </div>
+              <button class="btn-add-cart" onclick="event.stopPropagation();addToCart(${p.id})">加购</button>
             </div>
           </div>
         </div>
       `).join('');
 
-      // Trigger reveal animation
+      // Scroll reveal
       setTimeout(() => {
-        document.querySelectorAll('.product-card.reveal').forEach((el, i) => {
-          setTimeout(() => el.classList.add('show'), i * 60);
+        document.querySelectorAll('.fade-up').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 60) el.classList.add('show');
         });
-      }, 50);
+      }, 80);
     }
 
-    // ─── Category Filter ───
+    /* ── Category Filter ── */
     function filterCat(cat, btn) {
       document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
       renderProducts(cat);
     }
 
-    // ─── Cart ───
+    /* ── Cart ── */
     function openCart() {
       document.getElementById('cartOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1219,22 +1717,33 @@
       document.getElementById('cartOverlay').classList.remove('open');
       document.body.style.overflow = '';
     }
-    function addToCart(id) {
-      const p = products.find(x => x.id === id);
-      const existing = cart.find(x => x.id === id);
-      if (existing) {
-        existing.qty++;
-      } else {
-        cart.push({ ...p, qty: 1 });
-      }
-      updateBadge();
-      showToast(`已加入购物车：${p.name}`);
+
+    function quickAdd(id) {
+      addToCart(id);
     }
 
-    function addToCartFromDetail() {
+    function addToCart(id) {
+      const p = products.find(x => x.id === id);
+      const ex = cart.find(x => x.id === id);
+      if (ex) { ex.qty++; } else { cart.push({ ...p, qty: 1 }); }
+      updateBadge();
+      showToast(`已加入购物车：${p.name}`, 'success');
+    }
+
+    function addFromDetail() {
       if (currentDetailProduct) {
         addToCart(currentDetailProduct.id);
         closeDetail();
+      }
+    }
+
+    function buyNow() {
+      if (currentDetailProduct) {
+        addToCart(currentDetailProduct.id);
+        closeDetail();
+        setTimeout(() => {
+          openCheckout();
+        }, 350);
       }
     }
 
@@ -1249,20 +1758,31 @@
       const items = document.getElementById('cartItems');
       const empty = document.getElementById('cartEmpty');
       const footer = document.getElementById('cartFooter');
+      const countLabel = document.getElementById('cartCountLabel');
+
       if (cart.length === 0) {
         empty.style.display = 'block';
         footer.style.display = 'none';
         items.innerHTML = '';
         items.appendChild(empty);
+        countLabel.textContent = '';
       } else {
         empty.style.display = 'none';
         footer.style.display = 'block';
+        countLabel.textContent = `（${cart.reduce((s,i)=>s+i.qty,0)}件）`;
         items.innerHTML = cart.map(i => `
           <div class="cart-item">
             <img class="cart-item-img" src="${i.img}" alt="${i.name}" />
             <div class="cart-item-info">
               <div class="cart-item-name">${i.name}</div>
-              <div class="cart-item-price">¥${i.price.toFixed(1)} × ${i.qty}</div>
+              <div class="cart-item-ops">
+                <div class="cart-item-price">¥${i.price.toFixed(1)}</div>
+                <div class="qty-control">
+                  <button class="qty-btn" onclick="changeQty(${i.id}, -1)">−</button>
+                  <span class="qty-num">${i.qty}</span>
+                  <button class="qty-btn" onclick="changeQty(${i.id}, 1)">+</button>
+                </div>
+              </div>
             </div>
             <button class="cart-item-remove" onclick="removeFromCart(${i.id})">×</button>
           </div>
@@ -1271,18 +1791,26 @@
       }
     }
 
+    function changeQty(id, delta) {
+      const item = cart.find(x => x.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) { removeFromCart(id); return; }
+      updateBadge();
+      renderCart();
+    }
+
     function removeFromCart(id) {
       cart = cart.filter(i => i.id !== id);
       updateBadge();
       renderCart();
     }
 
-    // ─── Detail Modal ───
+    /* ── Detail Modal ── */
     function openDetail(id) {
       const p = products.find(x => x.id === id);
       currentDetailProduct = p;
       document.getElementById('modalImg').src = p.img;
-      document.getElementById('modalImg').alt = p.name;
       document.getElementById('modalCat').textContent = p.cat;
       document.getElementById('modalName').textContent = p.name;
       document.getElementById('modalDesc').textContent = p.desc;
@@ -1296,14 +1824,28 @@
       document.body.style.overflow = '';
     }
 
-    // ─── Order ───
-    function openOrder() {
-      if (cart.length === 0) { showToast('购物车是空的'); return; }
+    /* ── Checkout ── */
+    function openCheckout() {
+      if (cart.length === 0) { showToast('购物车是空的', 'error'); return; }
       closeCart();
       setTimeout(() => {
+        selectedPayment = null;
+        document.getElementById('qrDisplay').classList.remove('show');
+        document.querySelectorAll('.payment-qr-item').forEach(el => el.classList.remove('selected'));
+        document.getElementById('orderFormPanel').style.display = 'block';
+        document.getElementById('orderSuccessPanel').classList.remove('show');
+
+        // Populate order summary
+        const summary = document.getElementById('orderItemsSummary');
+        summary.innerHTML = cart.map(i => `
+          <div class="order-item-row">
+            <span class="oi-name">${i.name}</span>
+            <span class="oi-qty">× ${i.qty}</span>
+            <span class="oi-price">¥${(i.price * i.qty).toFixed(1)}</span>
+          </div>
+        `).join('');
+        document.getElementById('orderTotalAmount').textContent = '¥' + cart.reduce((s,i)=>s+i.price*i.qty,0).toFixed(1);
         document.getElementById('orderModal').classList.add('open');
-        document.getElementById('orderForm').style.display = 'block';
-        document.getElementById('orderSuccess').classList.remove('show');
         document.body.style.overflow = 'hidden';
       }, 350);
     }
@@ -1311,49 +1853,100 @@
       document.getElementById('orderModal').classList.remove('open');
       document.body.style.overflow = '';
     }
+
+    /* ── Payment Selection ── */
+    function selectPayment(type) {
+      selectedPayment = type;
+      document.querySelectorAll('.payment-qr-item').forEach(el => el.classList.remove('selected'));
+      document.getElementById('qr-' + type).classList.add('selected');
+      const qrDisplay = document.getElementById('qrDisplay');
+      qrDisplay.classList.add('show');
+      const total = cart.reduce((s,i)=>s+i.price*i.qty,0);
+      if (type === 'wechat') {
+        document.getElementById('qrIcon').textContent = '🟢';
+        document.getElementById('qrText').textContent = '微信扫码支付';
+        document.getElementById('qrAmount').textContent = '¥' + total.toFixed(1);
+        document.getElementById('qrTip').textContent = '长按保存收款码，打开微信扫一扫 → 相册 → 完成支付';
+      } else {
+        document.getElementById('qrIcon').textContent = '🔵';
+        document.getElementById('qrText').textContent = '支付宝扫码支付';
+        document.getElementById('qrAmount').textContent = '¥' + total.toFixed(1);
+        document.getElementById('qrTip').textContent = '长按保存收款码，打开支付宝扫一扫 → 完成支付';
+      }
+    }
+
+    /* ── Submit Order ── */
     function submitOrder() {
       const name = document.getElementById('buyerName').value.trim();
       const phone = document.getElementById('buyerPhone').value.trim();
       const addr = document.getElementById('buyerAddr').value.trim();
       const note = document.getElementById('buyerNote').value.trim();
+
       if (!name || !phone || !addr) {
-        showToast('请填写必填项（姓名、电话、地址）');
+        showToast('请填写必填项（姓名、电话、地址）', 'error');
         return;
       }
+      if (!/^1\d{10}$/.test(phone)) {
+        showToast('请输入正确的手机号码', 'error');
+        return;
+      }
+
+      const orderId = 'HW' + Date.now().toString().slice(-8);
+      const total = cart.reduce((s,i)=>s+i.price*i.qty,0);
       const order = {
-        id: Date.now(),
+        id: orderId,
         items: cart.map(i => ({ name: i.name, price: i.price, qty: i.qty })),
-        total: cart.reduce((s, i) => s + i.price * i.qty, 0),
-        buyer: { name, phone, addr, note }
+        total,
+        buyer: { name, phone, addr, note },
+        payment: selectedPayment,
+        createdAt: new Date().toLocaleString('zh-CN')
       };
-      console.log('📦 新订单：', order);
-      localStorage.setItem('latestOrder', JSON.stringify(order));
-      cart = [];
-      updateBadge();
-      document.getElementById('orderForm').style.display = 'none';
-      document.getElementById('orderSuccess').classList.add('show');
-      document.getElementById('buyerName').value = '';
-      document.getElementById('buyerPhone').value = '';
-      document.getElementById('buyerAddr').value = '';
-      document.getElementById('buyerNote').value = '';
+
+      // Save order
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      orders.unshift(order);
+      localStorage.setItem('orders', JSON.stringify(orders.slice(0, 50)));
+
+      // Show success
+      document.getElementById('orderFormPanel').style.display = 'none';
+      document.getElementById('orderSuccessPanel').classList.add('show');
+      document.getElementById('successOrderId').textContent = '订单号：' + orderId;
+
+      // Keep cart for reference
+      // cart = []; // Keep for display
+      // updateBadge();
     }
 
-    // ─── Toast ───
+    /* ── Toast ── */
     let toastTimer;
-    function showToast(msg) {
+    function showToast(msg, type = '') {
       const t = document.getElementById('toast');
       t.textContent = msg;
-      t.classList.add('show');
+      t.className = 'toast' + (type ? ' ' + type : '') + ' show';
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
     }
 
-    // ─── Scroll Reveal ───
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    /* ── Wechat Tip ── */
+    function showWechatTip() {
+      showToast('💬 微信/手机：13702225354', 'success');
+    }
 
-    // ─── Init ───
+    /* ── Payment Tip ── */
+    function showPaymentTip(type) {
+      showToast('请上传您的' + (type === 'wechat' ? '微信' : '支付宝') + '收款二维码', '');
+    }
+
+    /* ── Scroll Reveal ── */
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.fade-up:not(.show)').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) el.classList.add('show');
+      });
+    });
+
+    /* ── Init ── */
     renderProducts();
   </script>
+</body>
+</html>
