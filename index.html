@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>好物集 — 严选家居·实用好物·品质生活</title>
   <meta name="description" content="精选高性价比好物，家居神器、实用小工具、品质美妆。厂家直发，售后无忧。" />
+  <meta name="keywords" content="好物,家居用品,实用工具,美妆耗材,厂家直发,高性价比,网购" />
+  <meta property="og:title" content="好物集 — 严选高性价比好物" />
+  <meta property="og:description" content="精选家居神器、实用小工具、品质美妆。厂家直发，省去中间环节。" />
+  <meta name="theme-color" content="#DC7B51" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
   <style>
@@ -1186,6 +1190,162 @@
     }
 
     /* ═══════════════════════════════
+       FLOATING BUTTONS
+    ═══════════════════════════════ */
+    .float-btns {
+      position: fixed;
+      right: 16px;
+      bottom: 80px;
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .float-btn {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .float-btn:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+    .float-btn.wechat { background: #07C160; }
+    .float-btn.top { background: white; border: 1.5px solid var(--border); font-size: 16px; color: var(--text2); }
+    .float-btn .fb-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: white;
+      margin-top: 1px;
+      line-height: 1;
+    }
+    .float-btn.top .fb-label { color: var(--text3); }
+    .float-tooltip {
+      position: absolute;
+      right: 60px;
+      background: #1C1917;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .float-tooltip::after {
+      content: '';
+      position: absolute;
+      right: -6px; top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-left-color: #1C1917;
+      border-right: none;
+    }
+    .float-btn:hover .float-tooltip { opacity: 1; }
+
+    /* ═══════════════════════════════
+       COUNTDOWN BANNER
+    ═══════════════════════════════ */
+    .countdown-bar {
+      max-width: var(--max-w);
+      margin: 20px auto 0;
+      padding: 0 20px;
+    }
+    .countdown-inner {
+      background: linear-gradient(135deg, #1C1917 0%, #292524 100%);
+      border-radius: 16px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .countdown-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .countdown-fire { font-size: 24px; }
+    .countdown-text h4 { font-size: 14px; font-weight: 700; color: white; }
+    .countdown-text p { font-size: 12px; color: rgba(255,255,255,0.5); }
+    .countdown-timer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cd-unit {
+      background: var(--accent);
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-variant-numeric: tabular-nums;
+    }
+    .cd-sep { color: rgba(255,255,255,0.5); font-size: 18px; font-weight: 700; }
+
+    /* ═══════════════════════════════
+       REVIEWS SECTION
+    ═══════════════════════════════ */
+    .reviews-section {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .review-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: box-shadow 0.2s;
+    }
+    .review-card:hover { box-shadow: var(--shadow); }
+    .review-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .review-name { font-size: 13px; font-weight: 700; }
+    .review-stars { font-size: 12px; color: #F59E0B; }
+    .review-product { font-size: 11px; color: var(--text3); }
+    .review-text { font-size: 13px; color: var(--text2); line-height: 1.7; }
+    .review-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+
+    /* ═══════════════════════════════
        TOAST
     ═══════════════════════════════ */
     .toast {
@@ -1273,6 +1433,7 @@
       .trust-bar { grid-template-columns: repeat(2, 1fr); }
       .payment-banner { grid-template-columns: 1fr; gap: 32px; padding: 36px 28px; }
       .footer-inner { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
       .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -1289,6 +1450,8 @@
       .modal-actions { grid-template-columns: 1fr; }
       .payment-codes { grid-template-columns: 1fr; }
       .payment-qr-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .countdown-inner { flex-direction: column; align-items: flex-start; }
     }
     @media (max-width: 380px) {
       .product-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -1446,6 +1609,74 @@
             <p>供应商直接发货到您手中，快递配送上门，省心省力。</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Countdown Banner -->
+  <div class="countdown-bar fade-up">
+    <div class="countdown-inner">
+      <div class="countdown-left">
+        <div class="countdown-fire">🔥</div>
+        <div class="countdown-text">
+          <h4>限时特惠倒计时</h4>
+          <p>新店开业 · 全场特价 · 机会不等人</p>
+        </div>
+      </div>
+      <div class="countdown-timer" id="countdownTimer">
+        <div class="cd-unit" id="cdHour">00</div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit" id="cdMin">00</div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit" id="cdSec">00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews Section -->
+  <div class="section-header fade-up">
+    <div class="section-title-wrap">
+      <h2>真实好评</h2>
+      <p>顾客真实反馈，值得信赖</p>
+    </div>
+  </div>
+  <section class="reviews-section fade-up">
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">😊</div>
+          <div>
+            <div class="review-name">小红</div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-product">购买：多功能收纳箱</div>
+          </div>
+        </div>
+        <div class="review-text">收纳箱质量很好，折叠方便，搬家的时候特别实用！比超市便宜一半，发货也快。</div>
+        <div class="review-tag">超值推荐</div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">😍</div>
+          <div>
+            <div class="review-name">小美</div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-product">购买：电动牙刷</div>
+          </div>
+        </div>
+        <div class="review-text">牙刷震动很强，刷得很干净。充电一次能用很久，性价比超高！客服也很nice。</div>
+        <div class="review-tag">好用又便宜</div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">🤩</div>
+          <div>
+            <div class="review-name">老王</div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-product">购买：精密螺丝刀套装</div>
+          </div>
+        </div>
+        <div class="review-text">32件套真的很全，家里各种小东西都能修了。材质做工不错，比实体店便宜很多。</div>
+        <div class="review-tag">实用好物</div>
       </div>
     </div>
   </section>
@@ -1636,6 +1867,46 @@
         <p>我们已收到您的订单信息<br>请按下方提示完成支付，支付完成后<br><strong style="color:var(--accent)">联系微信：13702225354 确认发货</strong><br>客服将在24小时内安排发货，请保持电话畅通</p>
         <br>
         <button class="btn-accent" onclick="closeOrder()" style="display:inline-flex;">继续购物</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Buttons -->
+  <div class="float-btns">
+    <button class="float-btn wechat" onclick="showWechatTip()" aria-label="微信客服">
+      💬
+      <span class="fb-label">客服</span>
+      <div class="float-tooltip">微信：13702225354</div>
+    </button>
+    <button class="float-btn top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到顶部">
+      ↑
+      <span class="fb-label">顶部</span>
+    </button>
+  </div>
+
+  <!-- Admin Panel Link (hidden) -->
+  <a href="javascript:void(0)" onclick="openAdmin()" id="adminLink" style="position:fixed;bottom:6px;right:18px;font-size:10px;color:rgba(0,0,0,0.08);z-index:50;cursor:default;">.</a>
+
+  <!-- Admin Panel -->
+  <div class="order-modal-overlay" id="adminModal">
+    <div class="order-modal" style="max-width:700px;padding:24px;">
+      <div class="order-modal-header">
+        <h3>📦 订单管理后台</h3>
+        <button class="order-close-btn" onclick="closeAdmin()">×</button>
+      </div>
+      <div id="adminLogin" style="text-align:center;padding:40px 0;">
+        <p style="font-size:14px;color:var(--text2);margin-bottom:20px;">输入管理员密钥查看订单</p>
+        <input type="password" id="adminKey" placeholder="请输入密钥" style="max-width:300px;margin:0 auto 12px;" />
+        <br>
+        <button class="btn-accent" onclick="checkAdminKey()">进入后台</button>
+        <p style="font-size:11px;color:var(--text3);margin-top:12px;">（密钥：hao123）</p>
+      </div>
+      <div id="adminPanel" style="display:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <div id="adminStats" style="font-size:13px;color:var(--text2);"></div>
+          <button class="btn-ghost" style="padding:8px 16px;font-size:12px;" onclick="exportOrders()">📥 导出订单</button>
+        </div>
+        <div id="adminOrders" style="max-height:400px;overflow-y:auto;"></div>
       </div>
     </div>
   </div>
@@ -1947,6 +2218,93 @@
 
     /* ── Init ── */
     renderProducts();
+
+    /* ── Countdown Timer ── */
+    function startCountdown() {
+      const target = new Date();
+      target.setHours(target.getHours() + 24);
+      function update() {
+        const now = new Date();
+        const diff = target - now;
+        if (diff <= 0) {
+          target.setHours(target.getHours() + 24);
+          update();
+          return;
+        }
+        const h = Math.floor(diff / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById('cdHour').textContent = h.toString().padStart(2, '0');
+        document.getElementById('cdMin').textContent = m.toString().padStart(2, '0');
+        document.getElementById('cdSec').textContent = s.toString().padStart(2, '0');
+      }
+      update();
+      setInterval(update, 1000);
+    }
+    startCountdown();
+
+    /* ── Admin Panel ── */
+    function openAdmin() {
+      document.getElementById('adminModal').classList.add('open');
+      document.getElementById('adminLogin').style.display = 'block';
+      document.getElementById('adminPanel').style.display = 'none';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeAdmin() {
+      document.getElementById('adminModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function checkAdminKey() {
+      const key = document.getElementById('adminKey').value;
+      if (key === 'hao123') {
+        document.getElementById('adminLogin').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        loadAdminOrders();
+      } else {
+        showToast('密钥错误', 'error');
+      }
+    }
+    function loadAdminOrders() {
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      const stats = document.getElementById('adminStats');
+      const total = orders.reduce((s, o) => s + o.total, 0);
+      stats.textContent = `共 ${orders.length} 笔订单 · 总金额 ¥${total.toFixed(1)}`;
+      const panel = document.getElementById('adminOrders');
+      if (orders.length === 0) {
+        panel.innerHTML = '<div style="text-align:center;color:var(--text3);padding:40px;">暂无订单</div>';
+      } else {
+        panel.innerHTML = orders.map((o, i) => `
+          <div style="background:var(--bg);border-radius:12px;padding:14px;margin-bottom:12px;font-size:12px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <strong style="font-size:13px;">${o.id}</strong>
+              <span style="color:var(--text3);">${o.createdAt}</span>
+            </div>
+            <div style="color:var(--text2);margin-bottom:6px;">
+              ${o.items.map(i => `${i.name} ×${i.qty}`).join('、')}
+            </div>
+            <div style="display:flex;justify-content:space-between;">
+              <span><strong>¥${o.total.toFixed(1)}</strong> · ${o.payment === 'wechat' ? '微信' : o.payment === 'alipay' ? '支付宝' : '未选'}</span>
+              <span style="color:var(--accent);">${o.buyer.name} ${o.buyer.phone}</span>
+            </div>
+            <div style="color:var(--text3);margin-top:6px;">📍 ${o.buyer.addr}</div>
+            ${o.buyer.note ? `<div style="color:var(--accent);margin-top:4px;">📝 ${o.buyer.note}</div>` : ''}
+          </div>
+        `).join('');
+      }
+    }
+    function exportOrders() {
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      if (orders.length === 0) { showToast('暂无订单可导出', 'error'); return; }
+      const csv = '订单号,商品,金额,支付方式,姓名,电话,地址,备注,时间\n' + orders.map(o => 
+        `"${o.id}","${o.items.map(i=>i.name+'×'+i.qty).join(' ')}",${o.total},"${o.payment||'未选'}","${o.buyer.name}","${o.buyer.phone}","${o.buyer.addr}","${o.buyer.note||''}","${o.createdAt}"`
+      ).join('\n');
+      const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'orders_' + new Date().toISOString().slice(0,10) + '.csv';
+      a.click();
+      showToast('订单已导出', 'success');
+    }
   </script>
 </body>
 </html>
